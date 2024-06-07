@@ -1,9 +1,3 @@
-import { Button } from "@/components/ui/button";
-
-export default function Home() {
-    return (
-        <Button size="sm" variant="outline">
-            click me
-        </Button>
-    );
+export default function Page() {
+    return <p>onaly authenticated uses can see this</p>;
 }
