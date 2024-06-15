@@ -1,6 +1,28 @@
 version: "3.8"
 
 services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+      - /app/node_modules
+    ports:
+      - "3000:3000"
+      - "5555:5555"
+    depends_on:
+      - db
+    networks:
+      - chat_services_network
+    develop:
+      watch:
+        - action: sync
+          path: ./src
+          target: /src
+        - action: rebuild
+          path: package.json
+
   db:
     image: postgres:alpine
     ports:
@@ -9,3 +31,8 @@ services:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
+    networks:
+      - chat_services_network
+
+networks:
+  chat_services_network:
