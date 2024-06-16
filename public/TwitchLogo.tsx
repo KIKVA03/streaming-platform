@@ -1,8 +1,11 @@
 import React from "react";
 
-type Props = {};
+type Props = {
+    width?: number;
+    height?: number;
+};
 
-const TwitchLogo = (props: Props) => {
+const TwitchLogo = ({ height, width }: Props) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -12,8 +15,8 @@ const TwitchLogo = (props: Props) => {
             fillRule="evenodd"
             clipRule="evenodd"
             viewBox="0 0 439 512.17"
-            width={80}
-            height={80}
+            width={width ? width : 80}
+            height={height ? height : 80}
         >
             <g fillRule="nonzero">
                 <path
