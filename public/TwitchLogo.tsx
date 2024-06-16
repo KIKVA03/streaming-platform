@@ -6,16 +6,16 @@ const TwitchLogo = (props: Props) => {
     return (
         <svg
             xmlns="http://www.w3.org/2000/svg"
-            shape-rendering="geometricPrecision"
-            text-rendering="geometricPrecision"
-            image-rendering="optimizeQuality"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
+            shapeRendering="geometricPrecision"
+            textRendering="geometricPrecision"
+            imageRendering="optimizeQuality"
+            fillRule="evenodd"
+            clipRule="evenodd"
             viewBox="0 0 439 512.17"
             width={80}
             height={80}
         >
-            <g fill-rule="nonzero">
+            <g fillRule="nonzero">
                 <path
                     fill="#FEFEFE"
                     d="M402.42 237.79l-73.17 73.17h-73.17l-64.02 64.02v-64.02h-82.31V36.59h292.67z"
