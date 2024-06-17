@@ -18,7 +18,7 @@ export const Logo = () => {
                 </div>
                 <div className={cn(fonts.className)}>
                     <p className="text-lg font-semibold">Gamehub</p>
-                    <p className="text-xm text-muted-foreground">Let&apos;s play</p>
+                    <p className="text-xs text-muted-foreground">Let&apos;s play</p>
                 </div>
             </div>
         </Link>
