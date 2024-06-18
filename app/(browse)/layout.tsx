@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Suspense } from "react";
 import NavBar from "./_components/navBar";
-import Sidebar from "./_components/sideBar";
+import { SideBarSkeleton, Sidebar } from "./_components/sideBar";
 import Container from "./_components/container";
 
 type Props = {
@@ -12,7 +12,9 @@ const layout = ({ children }: Props) => {
         <>
             <NavBar />
             <div className="flex h-full pt-20">
-                <Sidebar />
+                <Suspense fallback={<SideBarSkeleton />}>
+                    <Sidebar />
+                </Suspense>
                 <Container>{children}</Container>
             </div>
         </>
