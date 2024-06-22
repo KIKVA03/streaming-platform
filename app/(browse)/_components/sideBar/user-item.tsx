@@ -25,8 +25,6 @@ export const UserItem = ({ imageUrl, isLive, username }: Props) => {
 
     const isActive = pathname === href;
 
-    console.log("pathname maaaaan", pathname);
-
     return (
         <Button
             variant="ghost"

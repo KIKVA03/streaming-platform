@@ -2,8 +2,7 @@
 import { useSidebar } from "@/store/use-sidebar";
 import { User } from "@prisma/client";
 import React from "react";
-import { UserItem } from "./user-item";
-import { UserAvatarSkeleton } from "@/components/user-avatar";
+import { UserItem, UserItemSkeleton } from "./user-item";
 
 type Props = {
     data: User[];
@@ -38,11 +37,9 @@ export const Recommended = ({ data }: Props) => {
 export const RecomendedSkeleton = () => {
     return (
         <ul className="px-2">
-            {[
-                ...Array(3).map((_, i) => {
-                    return <UserAvatarSkeleton key={i} />;
-                }),
-            ]}
+            {[...Array(3)].map((_, i) => (
+                <UserItemSkeleton key={i} />
+            ))}
         </ul>
     );
 };
