@@ -11,9 +11,9 @@ const Wrapper = ({ children }: Props) => {
     const [isClient, setIsClient] = useState(false);
     const { collapsed } = useSidebar((state) => state);
 
-    useEffect(() => {
-        setIsClient(true);
-    }, []);
+    // useEffect(() => {
+    //     setIsClient(true);
+    // }, []);
 
     if (!isClient) return null;
     return (
