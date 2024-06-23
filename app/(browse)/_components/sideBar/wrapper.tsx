@@ -8,14 +8,14 @@ type Props = {
 };
 
 const Wrapper = ({ children }: Props) => {
-    const [isClient, setIsClient] = useState(false);
+    // const [isClient, setIsClient] = useState(false);
     const { collapsed } = useSidebar((state) => state);
 
     // useEffect(() => {
     //     setIsClient(true);
     // }, []);
 
-    if (!isClient) return null;
+    // if (!isClient) return null;
     return (
         <div>
             <aside

@@ -2,7 +2,7 @@ import React from "react";
 import Wrapper from "./wrapper";
 import { Toggle } from "./toggle";
 import { RecomendedSkeleton, Recommended } from "./recommended";
-import { getRecomendedUsers } from "@/lib/recomended-service";
+import { getRecomendedUsers } from "@/lib/recomendedUsers-service";
 
 type Props = {};
 

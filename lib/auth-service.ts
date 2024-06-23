@@ -2,7 +2,6 @@
 
 import { currentUser } from "@clerk/nextjs/server";
 import db from "./db";
-import { use } from "react";
 
 export const getSelf = async () => {
     const self = await currentUser();

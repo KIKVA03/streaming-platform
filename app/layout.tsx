@@ -2,6 +2,7 @@ import { ClerkProvider, SignInButton, SignedIn, SignedOut, UserButton } from "@c
 import { dark } from "@clerk/themes";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
@@ -28,6 +29,7 @@ export default function RootLayout({
                         <SignedIn>
                         <UserButton afterSignOutUrl="/" />
                         </SignedIn> */}
+                        <Toaster theme="light" position="bottom-center" />
                         {children}
                     </ThemeProvider>
                 </body>
