@@ -12,6 +12,7 @@ export const getRecomendedUsers = async () => {
     let users = [];
 
     // aq vfiltravt recomendid userebs rom romlebsac vafolovebt egeni ar wamoighos recomendidebshi da aseve dablokili userebi
+    // aq vfiltravt recomendid userebs rom romlebsac vafolovebt egeni ar wamoighos recomendidebshi da aseve dablokili userebi
 
     if (userId) {
         users = await db.user.findMany({
