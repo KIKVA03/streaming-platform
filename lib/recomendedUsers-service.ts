@@ -11,6 +11,8 @@ export const getRecomendedUsers = async () => {
     }
     let users = [];
 
+    // aq vfiltravt recomendid userebs rom romlebsac vafolovebt egeni ar wamoighos recomendidebshi da aseve dablokili userebi
+
     if (userId) {
         users = await db.user.findMany({
             where: {
@@ -25,6 +27,15 @@ export const getRecomendedUsers = async () => {
                             followedBy: {
                                 some: {
                                     followerId: userId,
+                                },
+                            },
+                        },
+                    },
+                    {
+                        NOT: {
+                            blocking: {
+                                some: {
+                                    blockedId: userId,
                                 },
                             },
                         },
