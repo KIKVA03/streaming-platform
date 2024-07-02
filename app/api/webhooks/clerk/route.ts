@@ -26,8 +26,6 @@ export async function POST(req: Request) {
     const payload = await req.json();
     const body = JSON.stringify(payload);
 
-    console.log("კრე დენ ცია ლები", payload.data.id, payload.data.username, payload.data.image_url);
-
     // Create a new Svix instance with your secret.
     const wh = new Webhook(WEBHOOK_SECRET);
 
@@ -54,6 +52,12 @@ export async function POST(req: Request) {
                 externalUserId: payload.data.id,
                 username: payload.data.username,
                 imageUrl: payload.data.image_url,
+                // useris sjeqmnastan ertadve vaketebt streamsac
+                strem: {
+                    create: {
+                        name: `${payload.data.username}'s stream`,
+                    },
+                },
             },
         });
     }
