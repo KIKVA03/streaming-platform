@@ -38,7 +38,7 @@ export const Following = ({ data }: Props) => {
 export const FollowingSkeleton = () => {
     return (
         <ul className="px-2 pt-1 lg:pt-0">
-            {[Array(3)].map((_, i) => (
+            {[...Array(3)].map((_, i) => (
                 <UserItemSkeleton key={i} />
             ))}
         </ul>
