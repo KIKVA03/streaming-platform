@@ -1,5 +1,7 @@
 "use client";
 
+import { ElementRef, useRef, useState, useTransition } from "react";
+
 import { Button } from "@/components/ui/button";
 import {
     Dialog,
@@ -11,6 +13,9 @@ import {
 } from "@/components/ui/dialog";
 
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { IngressInput } from "livekit-server-sdk";
+import { createIngress } from "@/actions/ingress";
+
 import {
     Select,
     SelectContent,
@@ -20,12 +25,33 @@ import {
 } from "@/components/ui/select";
 
 import { AlertTriangle } from "lucide-react";
+import { toast } from "sonner";
 
 type Props = {};
+
+const RTMP = String(IngressInput.RTMP_INPUT);
+const WHIP = String(IngressInput.WHIP_INPUT);
+
+type IngressType = typeof RTMP | typeof WHIP;
 
 //es aris sulmtlianad modali dzalian martivad tviton aketebs yvelafers gvawvdis mza componentebs
 
 const ConnectModal = (props: Props) => {
+    const closeRef = useRef<ElementRef<"button">>(null);
+    const [isPending, startTransition] = useTransition();
+    const [ingresstype, setIngresstype] = useState<IngressType>(RTMP);
+
+    const onSubmit = () => {
+        startTransition(() => {
+            createIngress(parseInt(ingresstype))
+                .then(() => {
+                    toast.success("Ingress created");
+                    closeRef?.current?.click();
+                })
+                .catch(() => toast.error("Something went wrong"));
+        });
+    };
+
     return (
         <Dialog>
             <DialogTrigger asChild>
@@ -35,13 +61,17 @@ const ConnectModal = (props: Props) => {
                 <DialogHeader>
                     <DialogTitle>Generate Connection</DialogTitle>
                 </DialogHeader>
-                <Select>
+                <Select
+                    value={ingresstype}
+                    onValueChange={(value) => setIngresstype(value)}
+                    disabled={isPending}
+                >
                     <SelectTrigger className="w-full">
                         <SelectValue placeholder="Ingress Type" />
                     </SelectTrigger>
                     <SelectContent>
-                        <SelectItem value="RTMP">RTMP</SelectItem>
-                        <SelectItem value="WHIP">WHIP</SelectItem>
+                        <SelectItem value={RTMP}>RTMP</SelectItem>
+                        <SelectItem value={WHIP}>WHIP</SelectItem>
                     </SelectContent>
                 </Select>
                 <Alert>
@@ -52,10 +82,10 @@ const ConnectModal = (props: Props) => {
                     </AlertDescription>
                 </Alert>
                 <div className="flex justify-between">
-                    <DialogClose>
+                    <DialogClose asChild ref={closeRef}>
                         <Button variant="ghost">Cancel</Button>
                     </DialogClose>
-                    <Button variant="primary" onClick={() => {}}>
+                    <Button variant="primary" onClick={onSubmit} disabled={isPending}>
                         Generate
                     </Button>
                 </div>
